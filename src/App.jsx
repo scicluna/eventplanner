@@ -6,9 +6,7 @@ import { Year } from './components/Year'
 function App() {
 
   return (
-    <div>
-      <Year />
-    </div>
+    <Year />
   )
 }
 
