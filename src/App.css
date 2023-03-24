@@ -23,10 +23,28 @@ body {
 .week {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  background-color: rgb(208, 206, 206);
+  gap: 1px;
 }
 
 .day {
   display: flex;
+  flex-direction: column;
   padding: 10px;
+  background-color: rgba(208, 206, 206, 0.678);
+}
+
+.day:hover {
+  cursor: pointer;
+  background-color: rgb(208, 206, 206);
+}
+
+.events {
+  height: 100%;
+  width: 100%;
+}
+
+.event {
+  height: 100%;
+  width: 100%;
+  white-space: pre-wrap;
 }
