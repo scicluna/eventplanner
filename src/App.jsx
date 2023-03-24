@@ -1,35 +1,20 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { Year } from './components/Year'
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div>
+      <Year />
     </div>
   )
 }
 
 export default App
+
+//what does my shell need in an event planner?
+//we need a list of events, right? Maybe useState(Array.fill(7, null)) for a week of events? do we scope this for one week? what about other weeks?
+//how do we do all weeks in a year? 52 arrays of 7? I guess so, lol.  so... the core scope needs to be... 52 arrays with 7 empties each. 
+//then... it maps over the state... and returns a week with the corresponding 7 empties... OH god. I kind of like it though
