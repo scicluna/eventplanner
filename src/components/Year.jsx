@@ -6,8 +6,9 @@ import 'aos/dist/aos.css'
 
 
 export function Year() {
-    const [year, setYear] = useState(Array(52).fill([Array(7).fill(null)]))
-
+    const [year, setYear] = useState(
+        JSON.parse(localStorage.getItem('year')) || Array(52).fill([Array(7).fill(null)])
+    )
 
     Aos.init({
         offset: 60,
@@ -16,11 +17,19 @@ export function Year() {
         startEvent: 'DOMContentLoaded'
     })
 
+    function updateYear(yearIndex, week) {
+        let thisYear = [...year]
+        thisYear[yearIndex] = week
+        setYear(thisYear)
+        localStorage.setItem('year', JSON.stringify(thisYear))
+    }
+
+    console.log(year)
 
     return (
         <div className={"giantgrid"}>
             {year.map((week, i) =>
-                <Week key={i} weeknumber={i} week={week} />)}
+                <Week key={i} weekNumber={i} week={week} updateYear={updateYear} />)}
         </div>
     )
 }

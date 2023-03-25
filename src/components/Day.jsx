@@ -3,7 +3,7 @@ import dayjs from "dayjs"
 import dayOfYear from 'dayjs/plugin/dayOfYear'
 dayjs.extend(dayOfYear)
 
-export function Day({ day, daynumber }) {
+export function Day({ weekIndex, day, daynumber, updateWeek }) {
     const [currentDay, setCurrentDay] = useState([day])
 
     function updateDay(e) {
@@ -20,16 +20,17 @@ export function Day({ day, daynumber }) {
         setTimeout(() => {
             e.target.parentNode.parentNode.classList.remove('shining')
         }, 700)
-    }
 
-    console.log(dayjs('2010-01-01').dayOfYear(365).format('DD/MM/YYYY'))
+        updateWeek(weekIndex, text)
+
+    }
 
     return (
         <div className={"day"} >
             {dayjs('2023-01-01').dayOfYear(daynumber).format('MM/DD/YYYY')}
             <div className={"events"} >
                 {currentDay?.map((day, i) =>
-                    <div data-key={day} key={i} className={"event"} onClick={(e) => updateDay(e)} onBlur={changeDay}>
+                    <div data-key={weekIndex} key={i} className={"event"} onClick={(e) => updateDay(e)} onBlur={changeDay}>
                         {day}
                     </div>)}
             </div>
