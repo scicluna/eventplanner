@@ -24,8 +24,6 @@ export function Year() {
         localStorage.setItem('year', JSON.stringify(thisYear))
     }
 
-    console.log(year)
-
     return (
         <div className={"giantgrid"}>
             {year.map((week, i) =>

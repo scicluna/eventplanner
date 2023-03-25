@@ -6,7 +6,18 @@ import { Year } from './components/Year'
 function App() {
 
   return (
-    <Year />
+    <>
+      <div className={'navbar'}>
+        <p className={'dayname'}>sunday</p>
+        <p className={'dayname'}>monday</p>
+        <p className={'dayname'}>tuesday</p>
+        <p className={'dayname'}>wednesday</p>
+        <p className={'dayname'}>thursday</p>
+        <p className={'dayname'}>friday</p>
+        <p className={'dayname'}>saturday</p>
+      </div>
+      <Year />
+    </>
   )
 }
 
