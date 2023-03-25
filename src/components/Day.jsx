@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react"
-import Aos from "aos"
+import dayjs from "dayjs"
+import dayOfYear from 'dayjs/plugin/dayOfYear'
+dayjs.extend(dayOfYear)
 
 export function Day({ day, daynumber }) {
     const [currentDay, setCurrentDay] = useState([day])
@@ -17,17 +19,17 @@ export function Day({ day, daynumber }) {
         e.target.parentNode.parentNode.classList.add('shining')
         setTimeout(() => {
             e.target.parentNode.parentNode.classList.remove('shining')
-        }, 500)
-
-
+        }, 700)
     }
+
+    console.log(dayjs('2010-01-01').dayOfYear(365).format('DD/MM/YYYY'))
 
     return (
         <div className={"day"} >
-            {daynumber}
+            {dayjs('2023-01-01').dayOfYear(daynumber).format('MM/DD/YYYY')}
             <div className={"events"} >
                 {currentDay?.map((day, i) =>
-                    <div data-key={i} key={i} className={"event"} onClick={(e) => updateDay(e)} onBlur={changeDay}>
+                    <div data-key={day} key={i} className={"event"} onClick={(e) => updateDay(e)} onBlur={changeDay}>
                         {day}
                     </div>)}
             </div>
