@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react"
 import Aos from "aos"
 
-
 export function Day({ day, daynumber }) {
     const [currentDay, setCurrentDay] = useState([day])
 
     function updateDay(e) {
         e.target.contentEditable = true
-        e.target.addEventListener('blur', changeDay)
     }
 
     function changeDay(e) {
@@ -15,15 +13,21 @@ export function Day({ day, daynumber }) {
         e.target.contentEditable = false
         const text = e.target.innerText
         if (text != currentDay) setCurrentDay([text])
-        Aos.refresh()
+
+        e.target.parentNode.parentNode.classList.add('shining')
+        setTimeout(() => {
+            e.target.parentNode.parentNode.classList.remove('shining')
+        }, 500)
+
+
     }
 
     return (
-        <div className={"day"} data-aos={"flip-up"} data-aos-mirror={'true'} >
+        <div className={"day"} >
             {daynumber}
             <div className={"events"} >
                 {currentDay?.map((day, i) =>
-                    <div key={i} className={"event"} onClick={(e) => updateDay(e)} >
+                    <div data-key={i} key={i} className={"event"} onClick={(e) => updateDay(e)} onBlur={changeDay}>
                         {day}
                     </div>)}
             </div>

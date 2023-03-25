@@ -48,3 +48,11 @@ body {
   width: 100%;
   white-space: pre-wrap;
 }
+
+.shining {
+  -webkit-transform: rotateY(360deg);
+  -moz-transform: rotateY(360deg);
+  -o-transform: rotateY(360deg);
+  transform: rotateY(360deg);
+  transition: 700ms ease;
+}

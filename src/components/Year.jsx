@@ -9,7 +9,12 @@ export function Year() {
     const [year, setYear] = useState(Array(52).fill([Array(7).fill(null)]))
 
 
-    Aos.init()
+    Aos.init({
+        offset: 60,
+        mirror: true,
+        duration: 700,
+        startEvent: 'DOMContentLoaded'
+    })
 
 
     return (
