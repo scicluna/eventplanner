@@ -9,8 +9,21 @@ export function Day({ weekIndex, day, daynumber, updateWeek, dayName }) {
     const dayRef = useRef(null)
 
     function updateDay(e) {
-        e.target.contentEditable = true
-        e.target.focus()
+        //weird hack to allow for tabbing into a div and then being able to directly type into it
+        setTimeout(() => {
+            e.target.contentEditable = true
+            const selectedText = window.getSelection()
+
+            const selectedRange = document.createRange()
+            selectedRange.setStart(e.target, 0);
+            selectedRange.collapse(true)
+
+            selectedText.removeAllRanges()
+            selectedText.addRange(selectedRange)
+
+        }, 0)
+
+
         e.target.classList.add('edit')
     }
 
@@ -46,9 +59,10 @@ export function Day({ weekIndex, day, daynumber, updateWeek, dayName }) {
     useEffect(() => {
         const currentState = relativeTime(daynumber)
         if (currentState == 'present') {
+            console.log('should work')
             const yOffset = -50;
-            const y = dayRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset //gotta be something smarter to offset it. and this doesnt always work for some reason
-            window.scrollTo({ top: y, behavior: 'smooth' });
+            const y = dayRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset
+            window.scrollTo({ top: y, behavior: 'instant' });
         }
     }, [])
 
@@ -60,7 +74,7 @@ export function Day({ weekIndex, day, daynumber, updateWeek, dayName }) {
             </div>
             <div className={"events"} >
                 {currentDay?.map((day, i) =>
-                    <div data-key={weekIndex} key={i} className={`event`} onClick={(e) => updateDay(e)} onBlur={changeDay}>
+                    <div data-key={weekIndex} key={i} className={`event`} onFocus={(e) => updateDay(e)} onBlur={changeDay} tabIndex={daynumber}>
                         {day}
                     </div>)}
             </div>
