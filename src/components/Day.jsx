@@ -3,7 +3,7 @@ import dayjs from "dayjs"
 import dayOfYear from 'dayjs/plugin/dayOfYear'
 dayjs.extend(dayOfYear)
 
-export function Day({ weekIndex, day, daynumber, updateWeek }) {
+export function Day({ weekIndex, day, daynumber, updateWeek, dayName }) {
     const [currentDay, setCurrentDay] = useState([day])
     const [currentTime, setCurrentTime] = useState('')
     const dayRef = useRef(null)
@@ -46,8 +46,8 @@ export function Day({ weekIndex, day, daynumber, updateWeek }) {
     useEffect(() => {
         const currentState = relativeTime(daynumber)
         if (currentState == 'present') {
-            const yOffset = -80;
-            const y = dayRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset
+            const yOffset = -50;
+            const y = dayRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset //gotta be something smarter to offset it.
             window.scrollTo({ top: y, behavior: 'smooth' });
         }
     }, [])
@@ -55,6 +55,9 @@ export function Day({ weekIndex, day, daynumber, updateWeek }) {
     return (
         <div className={`${currentTime} day`} ref={dayRef}>
             {dayjs('2023-01-01').dayOfYear(daynumber).format('MM/DD/YYYY')}
+            <div className={'dayname'}>
+                {dayName}
+            </div>
             <div className={"events"} >
                 {currentDay?.map((day, i) =>
                     <div data-key={weekIndex} key={i} className={`event`} onClick={(e) => updateDay(e)} onBlur={changeDay}>

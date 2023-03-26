@@ -7,6 +7,17 @@
 body {
   overflow-x: hidden;
   background-color: rgba(174, 170, 170, 0.79);
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  /* Firefox */
+  scroll-behavior: smooth;
+  scroll-margin-top: 25px;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+  /* Safari and Chrome */
 }
 
 #root {
@@ -26,6 +37,7 @@ body {
   grid-template-columns: repeat(7, 1fr);
   min-height: 15vh;
   gap: 1px;
+  scroll-snap-align: start;
 }
 
 .day {
@@ -34,7 +46,7 @@ body {
   padding: 8px;
   background-color: rgba(208, 206, 206, 0.654);
   font-weight: bolder;
-
+  position: relative;
 }
 
 .day:hover {
@@ -57,6 +69,16 @@ body {
   display: block;
   border: 0;
   outline: 0;
+  position: relative;
+}
+
+.dayname {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  color: rgba(128, 128, 128, 0.254);
 }
 
 .shining {
@@ -65,18 +87,6 @@ body {
   -o-transform: rotateY(360deg);
   transform: rotateY(360deg);
   transition: 700ms ease;
-}
-
-.navbar {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  overflow: hidden;
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0;
-  background-color: rgb(174, 170, 170);
-  z-index: 5;
-  padding-bottom: 5px;
 }
 
 .dayname {
