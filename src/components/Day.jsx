@@ -47,7 +47,7 @@ export function Day({ weekIndex, day, daynumber, updateWeek, dayName }) {
         const currentState = relativeTime(daynumber)
         if (currentState == 'present') {
             const yOffset = -50;
-            const y = dayRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset //gotta be something smarter to offset it.
+            const y = dayRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset //gotta be something smarter to offset it. and this doesnt always work for some reason
             window.scrollTo({ top: y, behavior: 'smooth' });
         }
     }, [])
