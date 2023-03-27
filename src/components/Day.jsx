@@ -74,7 +74,7 @@ export function Day({ weekIndex, day, daynumber, updateWeek, dayName }) {
             </div>
             <div className={"events"} >
                 {currentDay?.map((day, i) =>
-                    <div data-key={weekIndex} key={i} className={`event`} onFocus={(e) => updateDay(e)} onBlur={changeDay} tabIndex={daynumber}>
+                    <div data-key={weekIndex} data-day={daynumber} key={i} className={`event`} onFocus={(e) => updateDay(e)} onBlur={changeDay} tabIndex={daynumber}>
                         {day}
                     </div>)}
             </div>

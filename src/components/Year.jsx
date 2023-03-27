@@ -28,7 +28,6 @@ export function Year() {
     }
 
     return (
-
         <div className={"giantgrid"} ref={scrollRef} >
             {year.map((week, i) =>
                 <Week key={i} weekNumber={i} week={week} updateYear={updateYear} />)}

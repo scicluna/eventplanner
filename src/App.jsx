@@ -1,6 +1,6 @@
-import { useState } from 'react'
 import './index.css'
 import { Year } from './components/Year'
+import { Calendar } from './components/Calendar'
 
 
 function App() {
@@ -8,6 +8,7 @@ function App() {
   return (
     <>
       <Year />
+      <Calendar />
     </>
   )
 }
