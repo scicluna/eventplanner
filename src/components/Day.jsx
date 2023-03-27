@@ -22,8 +22,6 @@ export function Day({ weekIndex, day, daynumber, updateWeek, dayName }) {
             selectedText.addRange(selectedRange)
 
         }, 0)
-
-
         e.target.classList.add('edit')
     }
 

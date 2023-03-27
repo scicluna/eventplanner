@@ -2,7 +2,6 @@ import './index.css'
 import { Year } from './components/Year'
 
 function App() {
-
   return (
     <>
       <Year />

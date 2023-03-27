@@ -5,14 +5,12 @@ import 'aos/dist/aos.css'
 import useScrollSnap from 'react-use-scroll-snap'
 import { Calendar } from "./Calendar"
 
-
 export function Year() {
     const [year, setYear] = useState(
         JSON.parse(localStorage.getItem('year')) || Array(52).fill([Array(7).fill(null)])
     )
     const scrollRef = useRef(null)
     useScrollSnap({ ref: scrollRef, duration: 50, delay: 20 })
-
 
     Aos.init({
         offset: 60,

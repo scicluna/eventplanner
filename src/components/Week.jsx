@@ -2,7 +2,6 @@ import { useState } from "react"
 import { Day } from "./Day"
 import dayjs from "dayjs"
 
-
 export function Week({ week, weekNumber, updateYear }) {
     const [currentWeek, setCurrentWeek] = useState(week)
 
@@ -13,8 +12,6 @@ export function Week({ week, weekNumber, updateYear }) {
 
         updateYear(weekNumber, thisWeek)
     }
-
-
 
     return (
         <section className={"week"} data-aos={"flip-up"} data-aos-mirror={'true'}>
