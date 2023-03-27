@@ -6,7 +6,11 @@ export function Calendar() {
 
     function getOffset(el) {
         const rect = el.getBoundingClientRect();
-        if (rect.top < 0) return { top: rect.top + window.scrollY - 50 }
+        let offset;
+        if (window.innerHeight > 1200) offset = -70
+        else if (window.innerHeight < 1200) offset = -50
+
+        if (rect.top < 0) return { top: rect.top + window.scrollY + offset }
         else return { top: rect.top + window.scrollY }
     }
 
