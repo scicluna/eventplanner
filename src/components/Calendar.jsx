@@ -6,10 +6,10 @@ export function Calendar() {
 
     function snapToDate(e) {
         const dayNum = dayjs(e.target.value).dayOfYear()
-        const yOffset = -55;
+        const yOffset = -25;
         const y = document.querySelector(`[data-day="${dayNum}"]`).getBoundingClientRect().top + window.pageYOffset + yOffset
         console.log(y)
-        window.scrollTo({ top: y, behavior: 'instant' });
+        window.scrollTo({ top: y, behavior: 'smooth' });
     }
 
     return (
