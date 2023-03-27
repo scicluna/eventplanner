@@ -59,7 +59,6 @@ export function Day({ weekIndex, day, daynumber, updateWeek, dayName }) {
     useEffect(() => {
         const currentState = relativeTime(daynumber)
         if (currentState == 'present') {
-            console.log('should work')
             const yOffset = -50;
             const y = dayRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset
             window.scrollTo({ top: y, behavior: 'instant' });
@@ -67,14 +66,14 @@ export function Day({ weekIndex, day, daynumber, updateWeek, dayName }) {
     }, [])
 
     return (
-        <div className={`${currentTime} day`} ref={dayRef}>
+        <div className={`${currentTime} day`} ref={dayRef} data-day={daynumber}>
             {dayjs('2023-01-01').dayOfYear(daynumber).format('MM/DD/YYYY')}
             <div className={'dayname'}>
                 {dayName}
             </div>
             <div className={"events"} >
                 {currentDay?.map((day, i) =>
-                    <div data-key={weekIndex} data-day={daynumber} key={i} className={`event`} onFocus={(e) => updateDay(e)} onBlur={changeDay} tabIndex={daynumber}>
+                    <div data-key={weekIndex} key={i} className={`event`} onFocus={(e) => updateDay(e)} onBlur={changeDay} tabIndex={daynumber}>
                         {day}
                     </div>)}
             </div>

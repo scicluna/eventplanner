@@ -4,12 +4,16 @@ dayjs.extend(dayOfYear)
 
 export function Calendar() {
 
+    function getOffset(el) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < 0) return { top: rect.top + window.scrollY - 50 }
+        else return { top: rect.top + window.scrollY }
+    }
+
     function snapToDate(e) {
         const dayNum = dayjs(e.target.value).dayOfYear()
-        const yOffset = -25;
-        const y = document.querySelector(`[data-day="${dayNum}"]`).getBoundingClientRect().top + window.pageYOffset + yOffset
-        console.log(y)
-        window.scrollTo({ top: y, behavior: 'smooth' });
+        const yOffset = getOffset(document.querySelector(`[data-day="${dayNum}"]`)).top
+        window.scrollTo({ top: yOffset, behavior: 'smooth' });
     }
 
     return (

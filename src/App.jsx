@@ -1,14 +1,11 @@
 import './index.css'
 import { Year } from './components/Year'
-import { Calendar } from './components/Calendar'
-
 
 function App() {
 
   return (
     <>
       <Year />
-      <Calendar />
     </>
   )
 }

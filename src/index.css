@@ -12,7 +12,8 @@ body {
   scrollbar-width: none;
   /* Firefox */
   scroll-behavior: smooth;
-  scroll-margin-top: 25px;
+  scroll-snap-type: mandatory;
+
 }
 
 body::-webkit-scrollbar {
@@ -30,6 +31,9 @@ body::-webkit-scrollbar {
   height: 100%;
   grid-template-rows: repeat(52, auto);
   gap: 1px;
+  scroll-snap-type: y mandatory;
+  scroll-padding: 0;
+  scroll-margin: 0;
 }
 
 .week {

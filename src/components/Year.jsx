@@ -3,6 +3,7 @@ import { Week } from "./Week"
 import Aos from "aos"
 import 'aos/dist/aos.css'
 import useScrollSnap from 'react-use-scroll-snap'
+import { Calendar } from "./Calendar"
 
 
 export function Year() {
@@ -28,9 +29,12 @@ export function Year() {
     }
 
     return (
-        <div className={"giantgrid"} ref={scrollRef} >
-            {year.map((week, i) =>
-                <Week key={i} weekNumber={i} week={week} updateYear={updateYear} />)}
-        </div>
+        <>
+            <div className={"giantgrid"} ref={scrollRef} >
+                {year.map((week, i) =>
+                    <Week key={i} weekNumber={i} week={week} updateYear={updateYear} />)}
+            </div>
+            <Calendar />
+        </>
     )
 }
